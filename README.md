@@ -7,6 +7,7 @@ Students will use node, express, mongoose, controllers, services to create a ser
 ### Functionality
 In this project you will be completely responsible for creating and implementing the routes, schema, and database communications. Effectively use the controller and services pattern to pass data or requests to the service. Create the following routes that can interact with the database:
 
+    Create a blog
     Retrieve all blogs
     Retrieve blogs by query for title(slug)
     Retrieve all blogs by query for a tag
