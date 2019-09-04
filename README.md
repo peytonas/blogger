@@ -42,7 +42,7 @@ Your server will need to support the follwing functionality, be sure to create t
 Never trust the client! Insure that you are getting the user information off of the session and not through the request body, this helps insure that things are not created under the wrong user, or deleted by someone who should not have access.
 
 ## Requirements:
-<hr>
+
 
 #### Functionality
 - [ ] Users Can Register, Login, and Logout (this should work out of the box, don't break it)
