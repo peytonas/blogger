@@ -32,6 +32,7 @@ A comment will have:
 
 ```javascript
 {
+  blogId: "12fdsalkadsf12932dk",
   body: "The Era of E-Sports",
   author: { // How could this data get.... populated 
     _id: "12lkj3lkj24ljhlkj23lj231klf",
