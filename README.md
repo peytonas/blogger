@@ -16,7 +16,10 @@ A blog will have:
     {
       title: "The Era of E-Sports" //max length should be 60 characters
       summary: "A short description." // no more than 120 characters
-      author: "Jim Bob" 
+      author: { // How could this data get.... populated 
+        _id: "12lkj3lkj24ljhlkj23lj231klf",
+        name: "Jim Bob" 
+      },
       img: "https://placehold.it"
       body: "A bunch of stuff about E-Sports", 
     }
