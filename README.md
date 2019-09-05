@@ -14,18 +14,18 @@ In this project you will be completely responsible for creating and implementing
 A blog will have:
 
 ```javascript
-    {
-      title: "The Era of E-Sports" //max length should be 60 characters
-      summary: "A short description." // no more than 120 characters
-      author: { // How could this data get.... populated 
-        _id: "12lkj3lkj24ljhlkj23lj231klf",
-        name: "Jim Bob" 
-      },
-      img: "https://placehold.it"
-      body: "A bunch of stuff about E-Sports", 
-    }
-    
-    // timestamps: true
+{
+  title: "The Era of E-Sports" //max length should be 60 characters
+  summary: "A short description." // no more than 120 characters
+  author: { // How could this data get.... populated 
+    _id: "12lkj3lkj24ljhlkj23lj231klf",
+    name: "Jim Bob" 
+  },
+  img: "https://placehold.it"
+  body: "A bunch of stuff about E-Sports", 
+}
+
+// timestamps: true
 ```
 
 ### Step 2
