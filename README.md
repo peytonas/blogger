@@ -13,6 +13,7 @@ In this project you will be completely responsible for creating and implementing
 
 A blog will have:
 
+```javascript
     {
       title: "The Era of E-Sports" //max length should be 60 characters
       summary: "A short description." // no more than 120 characters
@@ -24,7 +25,8 @@ A blog will have:
       body: "A bunch of stuff about E-Sports", 
     }
     
-    timestamps: true
+    // timestamps: true
+```
 
 ### Step 2
 Your server will need to support the follwing functionality, be sure to create the following routes that can interact with the database:
