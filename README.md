@@ -51,6 +51,7 @@ Never trust the client! Insure that you are getting the user information off of 
 - [ ] Users can retrieve all the comments for a blog
 - [ ] Once logged in Users can Create Edit and Delete comments
 - [ ] Users can only modify/delete data they created
+- [ ] All data returns with its creators name
 
 ### Have fun!
 There are a lot of extended challenges and features that can be added to your blog engine. The Blog Company expects this feature set, but they encourage creativity! Some challenges could be allowing adding tags to a blog to increase searchablity. Upvoting or downvoting a blog. Retrieving most popular blog by the number of upvotes. You can use both our front end testing tool, and postman to test your server.
