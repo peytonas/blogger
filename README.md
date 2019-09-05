@@ -28,6 +28,21 @@ A blog will have:
 // timestamps: true
 ```
 
+A comment will have: 
+
+```javascript
+{
+  body: "The Era of E-Sports",
+  author: { // How could this data get.... populated 
+    _id: "12lkj3lkj24ljhlkj23lj231klf",
+    name: "Jim Bob" 
+  }
+}
+// timestamps: true
+```
+
+
+
 ### Step 2
 Your server will need to support the follwing functionality, be sure to create the following routes that can interact with the database:
 
