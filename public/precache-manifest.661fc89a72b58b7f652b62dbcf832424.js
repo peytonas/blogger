@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "4cd8787a50fae9391a57",
+    "revision": "edf12e1621b6c0cc9002",
     "url": "/css/app.889365d7.css"
   },
   {
-    "revision": "4cd8787a50fae9391a57",
-    "url": "/js/app.02e39b81.js"
+    "revision": "edf12e1621b6c0cc9002",
+    "url": "/js/app.3872b1b6.js"
   },
   {
     "revision": "e1236b7e5ebb5fdd3dd4",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/img/blogger-logo.99e135dd.png"
   },
   {
-    "revision": "ec09e6ac9a206fc0b9f88bf371ad2a0c",
+    "revision": "d3e090307cab2d300537ec8e9594de15",
     "url": "/index.html"
   },
   {
@@ -28,11 +28,11 @@ self.__precacheManifest = [
     "url": "/favicon-32x32.png"
   },
   {
-    "revision": "951a67a8a6d9e122fd4257c4b90a0fab",
-    "url": "/favicon-blogger.ico"
-  },
-  {
     "revision": "735ab4f94fbcd57074377afca324c813",
     "url": "/robots.txt"
+  },
+  {
+    "revision": "951a67a8a6d9e122fd4257c4b90a0fab",
+    "url": "/favicon-blogger.ico"
   }
 ];
