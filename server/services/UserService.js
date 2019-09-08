@@ -1,13 +1,14 @@
 import mongoose from "mongoose"
 import bcrypt from 'bcryptjs'
 let Schema = mongoose.Schema
+let ObjectId = Schema.Types.ObjectId
 
 //bcrypt uses hashing and salt to obfiscate your password 
 const SALT = 10
 
 
 let _schema = new Schema({
-    name: { type: String, required: true },
+    name: { type: ObjectId, required: true },
     //every email must be unique on the database
     email: { type: String, required: true, unique: true },
     hash: { type: String, required: true }
