@@ -10,9 +10,9 @@ export default class BlogController {
     constructor() {
         this.router = express.Router()
             //NOTE all routes after the authenticate method will require the user to be logged in to access
-            .use(Authorize.authenticated)
             .get('', this.getAll)
             .get('/:id', this.getById)
+            .use(Authorize.authenticated)
             .post('', this.create)
             .put('/:id', this.edit)
             .delete('/:id', this.delete)
@@ -33,6 +33,12 @@ export default class BlogController {
                 throw new Error("Invalid Id")
             }
             res.send(data)
+        } catch (error) { next(error) }
+    }
+    async getComments(req, res, next) {
+        try {
+            let data = await _commentService.find({ planetId: req.params.id }).populate("blogId", "name")
+            return res.send(data)
         } catch (error) { next(error) }
     }
 
@@ -59,7 +65,10 @@ export default class BlogController {
 
     async delete(req, res, next) {
         try {
-            await _blogService.findOneAndRemove({ _id: req.params.id })
+            let data = await _blogService.findOneAndRemove({ _id: req.params.id, creatorId: req.session.uid })
+            if (!data) {
+                throw new Error("you didn't say the magic word")
+            }
             res.send("deleted blog")
         } catch (error) { next(error) }
 

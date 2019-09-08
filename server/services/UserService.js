@@ -35,5 +35,3 @@ export default class UserService {
         return bcrypt.hashSync(password, SALT)
     }
 }
-
-
