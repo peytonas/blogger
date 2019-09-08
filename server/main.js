@@ -26,7 +26,6 @@ let corsOptions = {
 };
 server.use(cors(corsOptions))
 
-
 //NOTE we are giving our server the bodyparser middleware. This middleware gives use the ability to pass information into our server as a request and parse it from JSON back into objects.
 server.use(bp.urlencoded({ extended: true }))
 server.use(bp.json())
@@ -49,8 +48,6 @@ import CommentController from './controllers/CommentController'
 server.use('/api/blogs', new BlogController().router)
 server.use('/api/comments', new CommentController().router)
 
-
-
 //NOTE Everything below this line always stays the same
 
 //NOTE Default error handler, catches all routes with an error attached
@@ -63,6 +60,5 @@ server.use((error, req, res, next) => {
 server.use('*', (req, res, next) => {
   res.status(404).send("Route not found")
 })
-
 
 server.listen(port, () => { console.log(`Server is running on port: ${port}`) })
