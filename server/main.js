@@ -13,7 +13,7 @@ let server = express()
 DbContext.connect()
 
 //NOTE Creates a reference to the build project on the client (if api only remove this line)
-server.use(express.static(__dirname + '/../client/dist'))
+server.use(express.static(__dirname + '/../public'))
 
 //NOTE Allows requests from the port 8080, add additional addresses as needed
 let whitelist = ['http://localhost:8080'];
@@ -42,10 +42,12 @@ server.use('/account', new AuthController().router)
 //NOTE next we want to register all our routes(doorways that can be accessed in our app)
 
 //NOTE we have to import access to our controllers
-import ValuesController from './controllers/ValuesController'
+import BlogController from './controllers/BlogController'
+import CommentController from './controllers/CommentController'
 
 //NOTE remember the forward slash at the start of your path!
-server.use('/api/values', new ValuesController().router)
+server.use('/api/blogs', new BlogController().router)
+server.use('/api/comments', new CommentController().router)
 
 
 
