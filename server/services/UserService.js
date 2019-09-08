@@ -1,7 +1,6 @@
 import mongoose from "mongoose"
 import bcrypt from 'bcryptjs'
 let Schema = mongoose.Schema
-let ObjectId = Schema.Types.ObjectId
 
 //bcrypt uses hashing and salt to obfiscate your password 
 const SALT = 10

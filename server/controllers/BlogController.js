@@ -17,43 +17,40 @@ export default class BlogController {
             .put('/:id', this.edit)
             .delete('/:id', this.delete)
     }
-
     async getAll(req, res, next) {
         try {
             let data = await _blogService.find({})
+                .populate("author", "name")
             return res.send(data)
         } catch (error) { next(error) }
 
     }
-
     async getById(req, res, next) {
         try {
             let data = await _blogService.findById(req.params.id)
             if (!data) {
-                throw new Error("Invalid Id")
+                throw new Error("Who Dis?")
             }
             res.send(data)
         } catch (error) { next(error) }
     }
     async getComments(req, res, next) {
         try {
-            let data = await _commentService.find({ planetId: req.params.id }).populate("blogId", "name")
+            let data = await _commentService.find({ blogId: req.params.id }).populate("blogId", "name")
             return res.send(data)
         } catch (error) { next(error) }
     }
-
     async create(req, res, next) {
         try {
             //NOTE the user id is accessable through req.body.uid, never trust the client to provide you this information
-            req.body.authorId = req.session.uid
-            let data = await _blogService.create(req.body)
+            req.description.author = req.session.uid
+            let data = await _blogService.create(req.description)
             res.send(data)
         } catch (error) { next(error) }
     }
-
     async edit(req, res, next) {
         try {
-            let data = await _blogService.findOneAndUpdate({ _id: req.params.id, }, req.body, { new: true })
+            let data = await _blogService.findOneAndUpdate({ blogId: req.params.id, author: req.params.uid }, req.description, { new: true })
             if (data) {
                 return res.send(data)
             }
@@ -62,16 +59,13 @@ export default class BlogController {
             next(error)
         }
     }
-
     async delete(req, res, next) {
         try {
-            let data = await _blogService.findOneAndRemove({ _id: req.params.id, creatorId: req.session.uid })
+            let data = await _blogService.findOneAndRemove({ blogId: req.params.id, author: req.session.uid })
             if (!data) {
                 throw new Error("you didn't say the magic word")
             }
             res.send("deleted blog")
         } catch (error) { next(error) }
-
     }
-
 }

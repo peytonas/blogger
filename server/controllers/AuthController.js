@@ -1,8 +1,8 @@
 import express from 'express'
-import userService from '../services/UserService';
+import UserService from '../services/UserService';
 import { Authorize } from '../middleware/authorize'
 
-const _userService = new userService()
+const _userService = new UserService()
 const _repo = _userService.repository
 //PUBLIC
 export default class AuthController {
@@ -14,7 +14,6 @@ export default class AuthController {
             .get('/authenticate', this.authenticate)
             .delete('/logout', this.logout)
     }
-
     async register(req, res, next) {
         //VALIDATE PASSWORD LENGTH
         if (req.body.password.length < 6) {
@@ -39,7 +38,6 @@ export default class AuthController {
             next(err)
         }
     }
-
     async login(req, res, next) {
         try {
             let user = await _repo.findOne({ email: req.body.email })
@@ -60,7 +58,6 @@ export default class AuthController {
             res.status(400).send("Invalid Username Or Password")
         }
     }
-
     async authenticate(req, res, next) {
         try {
             let user = await _repo.findOne({ _id: req.session.uid })
@@ -77,7 +74,6 @@ export default class AuthController {
             res.status(500).send(err)
         }
     }
-
     async logout(req, res, next) {
         try {
             req.session.destroy(err => {
@@ -91,4 +87,3 @@ export default class AuthController {
         } catch (error) { next(error) }
     }
 }
-
