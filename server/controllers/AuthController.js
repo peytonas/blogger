@@ -46,6 +46,7 @@ export default class AuthController {
                 return res.status(400).send("Invalid Username Or Password")
             }
             //CHECK THE PASSWORD
+            // @ts-ignore
             let valid = await user.validatePassword(req.body.password)
             if (!valid) {
                 return res.status(400).send("Invalid Username Or Password")
