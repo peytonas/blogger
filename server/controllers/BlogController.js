@@ -38,7 +38,7 @@ export default class BlogController {
     }
     async getComments(req, res, next) {
         try {
-            let data = await _commentService.find({ blogId: req.params.id }).populate("blogId", "name")
+            let data = await _commentService.find({ blogId: req.params.id }).populate("blogId", "name").populate('author', 'name')
             return res.send(data)
         } catch (error) { next(error) }
     }
@@ -52,7 +52,7 @@ export default class BlogController {
     }
     async edit(req, res, next) {
         try {
-            let data = await _blogService.findOneAndUpdate({ blogId: req.params.id, author: req.session.uid }, req.body, { new: true })
+            let data = await _blogService.findOneAndUpdate({ _id: req.params.id, author: req.session.uid }, req.body, { new: true })
                 .populate('author', 'name')
             if (data) {
                 return res.send(data)
@@ -64,7 +64,7 @@ export default class BlogController {
     }
     async delete(req, res, next) {
         try {
-            let data = await _blogService.findOneAndRemove({ blogId: req.params.id, author: req.session.uid })
+            let data = await _blogService.findOneAndRemove({ _id: req.params.id, author: req.session.uid })
             if (!data) {
                 throw new Error("you didn't say the magic word")
             }

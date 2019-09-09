@@ -52,7 +52,6 @@ export default class CommentController {
       if (data) {
         return res.send(data)
       }
-      throw new Error("invalid id")
     } catch (error) { next(error) }
   }
 
