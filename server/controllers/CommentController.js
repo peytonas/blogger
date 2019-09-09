@@ -39,15 +39,16 @@ export default class CommentController {
   async create(req, res, next) {
     try {
       //NOTE the user id is accessable through req.body.uid, never trust the client to provide you this information
-      req.description.author = req.session.uid
-      let data = await _commentService.create(req.description)
+      req.body.author = req.session.uid
+      let data = await _commentService.create(req.body)
       res.send(data)
     } catch (error) { next(error) }
   }
 
   async edit(req, res, next) {
     try {
-      let data = await _commentService.findOneAndUpdate({ _id: req.params.id, author: req.session.uid }, req.description, { new: true })
+      let data = await _commentService.findOneAndUpdate({ _id: req.params.id, author: req.session.uid }, req.body, { new: true })
+        .populate('author', 'name')
       if (data) {
         return res.send(data)
       }

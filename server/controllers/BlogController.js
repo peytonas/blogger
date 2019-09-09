@@ -12,6 +12,7 @@ export default class BlogController {
             //NOTE all routes after the authenticate method will require the user to be logged in to access
             .get('', this.getAll)
             .get('/:id', this.getById)
+            .get('/:id/comments', this.getComments)
             .use(Authorize.authenticated)
             .post('', this.create)
             .put('/:id', this.edit)
@@ -28,6 +29,7 @@ export default class BlogController {
     async getById(req, res, next) {
         try {
             let data = await _blogService.findById(req.params.id)
+                .populate('author', 'name')
             if (!data) {
                 throw new Error("Who Dis?")
             }
@@ -43,14 +45,15 @@ export default class BlogController {
     async create(req, res, next) {
         try {
             //NOTE the user id is accessable through req.body.uid, never trust the client to provide you this information
-            req.description.author = req.session.uid
-            let data = await _blogService.create(req.description)
+            req.body.author = req.session.uid
+            let data = await _blogService.create(req.body)
             res.send(data)
         } catch (error) { next(error) }
     }
     async edit(req, res, next) {
         try {
-            let data = await _blogService.findOneAndUpdate({ blogId: req.params.id, author: req.params.uid }, req.description, { new: true })
+            let data = await _blogService.findOneAndUpdate({ blogId: req.params.id, author: req.session.uid }, req.body, { new: true })
+                .populate('author', 'name')
             if (data) {
                 return res.send(data)
             }
